@@ -57,7 +57,7 @@ class ExpressionEvaluatorTest {
     @Test
     void validtest() throws RuntimeException
     {
-        String s="(2 + 8 $ 5)";
+        String s="(2 + 8 $$ 5)";
         assertThrows(RuntimeException.class, ()-> ExpressionEvaluator.validexpression(s), "Error!");
 }
 
@@ -65,9 +65,9 @@ class ExpressionEvaluatorTest {
      * testing if value is valid number
      */
  @Test
-    void validtestfornum() throws RuntimeException{
-        String s="(2 + abc - 5)";
-        assertThrows(RuntimeException.class, ()->ExpressionEvaluator.validexpression(s), "Error");
+    void validtestforpar() throws RuntimeException{
+        String s="(2 + ( 4 - 5)";
+        assertThrows(RuntimeException.class, ()->ExpressionEvaluator.validparentheses(s), "Error");
 
  }
  /**

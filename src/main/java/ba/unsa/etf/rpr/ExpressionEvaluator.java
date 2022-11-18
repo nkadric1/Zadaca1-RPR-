@@ -30,7 +30,7 @@ public class ExpressionEvaluator {
         else if(a.equals("*")) return v.pop()*b;
         else if(a.equals("/")) return v.pop()/b;
         else if(a.equals("sqrt")) return Math.sqrt(b);
-       else if(!(a.equals("+") || a.equals("-") || a.equals("/") || a.equals("*") || a.equals("sqrt") || a.equals("(") || a.equals(")"))) throw new RuntimeException("The operand is invalid!");
+      // else if(!(a.equals("+") || a.equals("-") || a.equals("/") || a.equals("*") || a.equals("sqrt") || a.equals("(") || a.equals(")"))) throw new RuntimeException("The operand is invalid!");
        else return 0;
     }
 /**
@@ -39,7 +39,7 @@ public class ExpressionEvaluator {
  * if str has any   operand other than those mentioned or if it is not a digit, it must throw RuntimeException*/
   public static void validexpression(String str) throws RuntimeException{
        String[] s=str.split(" ");
-       for(String s1: s){
+      for(String s1: s){
            if(!(s1.equals("+") || s1.equals("-") || s1.equals("/") || s1.equals("*") || s1.equals("sqrt") || s1.equals("(")
                    || s1.equals(")") )) {
                char[] c=s1.toCharArray();
@@ -47,8 +47,24 @@ public class ExpressionEvaluator {
            if(!(ch=='0' || ch=='1' || ch=='2' || ch=='3' || ch=='4' || ch=='5' || ch=='6' || ch=='7' || ch=='8' || ch=='9'))    throw new RuntimeException("The operand is invalid!");}
            }
        }
+
   }
 
+    /**
+     * this method checks if expression has same number of parentheses, if there are not then it throws RuntimeException
+     * @param str  is given expression that must be splited
+     */
+    public static void validparentheses(String str){
+    String[] s=str.split(" ");
+    int frs=0;
+    int sec = 0;
+    for(String s1 : s){
+        if(s1.equals("(")) frs=frs+1;
+        if(s1.equals(")")) sec=sec+1;
+
+    }
+    if(frs<sec || frs>sec) throw  new RuntimeException("Parentheses are invalid!");
+}
     /**
 
      * @param str the string that is passed
