@@ -89,4 +89,12 @@ class ExpressionEvaluatorTest {
         assertEquals(30,ExpressionEvaluator.evaluate(z));
     }
 
+    /**
+     *  if string is empty throw exception
+     */
+    @Test
+    void ev() throws RuntimeException{
+        assertThrows(RuntimeException.class, ()->ExpressionEvaluator.evaluate(" "), "Error");
+    }
+
 }

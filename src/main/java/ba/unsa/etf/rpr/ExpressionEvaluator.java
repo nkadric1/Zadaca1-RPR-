@@ -54,7 +54,7 @@ public class ExpressionEvaluator {
      * this method checks if expression has same number of parentheses, if there are not then it throws RuntimeException
      * @param str  is given expression that must be splited
      */
-    public static void validparentheses(String str){
+    public static void validparentheses(String str) throws RuntimeException{
     String[] s=str.split(" ");
     int frs=0;
     int sec = 0;
