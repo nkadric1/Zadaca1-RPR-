@@ -5,8 +5,12 @@ import java.util.Stack;
  * @author Kadrić Nerma
  * 19030 - index
  * @version 1.0
- * ExpressionEvaluator class implements Dijkstra algorithm to perform arithmetic operations of a expression that is given
+ *
 
+ */
+
+/**
+ * ExpressionEvaluator class implements Dijkstra algorithm to perform arithmetic operations of a expression that is given
  */
 public class ExpressionEvaluator {
     /**
