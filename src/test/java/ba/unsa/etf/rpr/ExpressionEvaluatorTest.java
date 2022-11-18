@@ -38,7 +38,7 @@ class ExpressionEvaluatorTest {
      */
     @Test void evaluateinvalid () throws IllegalArgumentException{
 
-      //  double res = ExpressionEvaluator.evaluate("( 5 + ( sqrt abc ) )");
+
         assertThrows(IllegalArgumentException.class, ()-> ExpressionEvaluator.evaluate("( 5 + ( sqrt abc ) )"), "Error!");
     }
 /**
