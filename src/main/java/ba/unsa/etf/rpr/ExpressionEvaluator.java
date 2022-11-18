@@ -5,15 +5,15 @@ import java.util.Stack;
  * @author Kadrić Nerma
  * 19030 - index
  * @version 1.0
- * this class implements Dijkstra algorithm to perform arithmetic operations of a expression that is given
+ * ExpressionEvaluator class implements Dijkstra algorithm to perform arithmetic operations of a expression that is given
 
  */
 public class ExpressionEvaluator {
     /**
      * this method perform arithmetic operations +,-,*,/
-     * @param  a string that is operand from expression
-     * @param v stack of doubles that keeps values from expression that must be evaluated
-     * "b" is the value that will be used with the operand str for arith. operations
+     * @param  a  the string that is operand from expression
+     * @param v stack of doubles that keeps values from expression that must be calculate
+     * "b" is the value that will be used with the operand a for arith. operations
      * @return the double value is result of the selected arithmetic operation
      */
     protected static double result(String a, Stack<Double> v){
@@ -29,7 +29,10 @@ public class ExpressionEvaluator {
        else if(!(a.equals("+") || a.equals("-") || a.equals("/") || a.equals("*") || a.equals("sqrt") || a.equals("(") || a.equals(")"))) throw new RuntimeException("The operand is invalid!");
        else return 0;
     }
-/** */
+/**
+ * this method checks if the expression is valid
+ * @param str is given expression that must be splited
+ * if str has any   operand other than those mentioned or if it is not a digit, it must throw RuntimeException*/
   public static void validexpression(String str) throws RuntimeException{
        String[] s=str.split(" ");
        for(String s1: s){
@@ -44,7 +47,7 @@ public class ExpressionEvaluator {
 
     /**
 
-         * @param str the string that is passed
+     * @param str the string that is passed
      *            to the function which evaluates expression from it
      * @return the double value that is result of expression from splited string
      */

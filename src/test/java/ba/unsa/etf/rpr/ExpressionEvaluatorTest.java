@@ -10,6 +10,9 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 
 class ExpressionEvaluatorTest {
 
+    /**
+     * testing whether the function calculates well
+     */
     @Test
     void result() {
          Stack<Double> a = new Stack<>();
@@ -17,7 +20,7 @@ class ExpressionEvaluatorTest {
          a.push(4.0);
 
 
-        assertEquals(2, ExpressionEvaluator.result("sqrt", a),"Greska");
+        assertEquals(2, ExpressionEvaluator.result("sqrt", a),"Error!");
     }
 
     /**
@@ -29,24 +32,14 @@ class ExpressionEvaluatorTest {
         assertEquals(101, ExpressionEvaluator.evaluate(s));
     }
 
-    /**
-     * testing function with more ()
-     */
-    @Test
-void evaluate4(){
-        String z="( 2 + ( ( 50 / 2 ) + ( sqrt 9 ) ) )";
-        assertEquals(30,ExpressionEvaluator.evaluate(z));
-}
 
     /**
      * testing function with sqrt
      */
-    @Test void evaluateinvalid (){
+    @Test void evaluateinvalid () throws IllegalArgumentException{
 
-        double res = ExpressionEvaluator.evaluate("( 5 + ( sqrt16 ) )");
-        assertThrows(IllegalArgumentException.class, ()-> ExpressionEvaluator.evaluate("( 5 + ( sqrt16 ) )"), " Error!");
-        assertEquals(9, res);
-
+      //  double res = ExpressionEvaluator.evaluate("( 5 + ( sqrt abc ) )");
+        assertThrows(IllegalArgumentException.class, ()-> ExpressionEvaluator.evaluate("( 5 + ( sqrt abc ) )"), "Error!");
     }
 /**
      * testing if function evaluate gives right result of expression
@@ -62,7 +55,8 @@ void evaluate4(){
      * testing if operand is valid for evaluating
      */
     @Test
-    void validtest() throws RuntimeException{
+    void validtest() throws RuntimeException
+    {
         String s="(2 + 8 $ 5)";
         assertThrows(RuntimeException.class, ()-> ExpressionEvaluator.validexpression(s), "Error!");
 }
@@ -85,5 +79,14 @@ void evaluate4(){
          assertEquals(4, ExpressionEvaluator.evaluate("( sqrt 16 )"));
     }
 
+
+    /**
+     * testing function with more parentheses
+     */
+    @Test
+    void evaluate_4(){
+        String z="( 2 + ( ( 50 / 2 ) + ( sqrt 9 ) ) )";
+        assertEquals(30,ExpressionEvaluator.evaluate(z));
+    }
 
 }
