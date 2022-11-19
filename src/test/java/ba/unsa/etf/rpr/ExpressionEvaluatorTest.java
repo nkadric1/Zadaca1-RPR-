@@ -96,5 +96,9 @@ class ExpressionEvaluatorTest {
     void ev() throws RuntimeException{
         assertThrows(RuntimeException.class, ()->ExpressionEvaluator.evaluate(" "), "Error");
     }
+    @Test
+    void evaluate_5() throws RuntimeException{
+        assertThrows(RuntimeException.class, ()->ExpressionEvaluator.validops("( 1 * * 2 )"), "Error");
+    }
 
 }

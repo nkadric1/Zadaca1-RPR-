@@ -65,6 +65,22 @@ public class ExpressionEvaluator {
     }
     if(frs<sec || frs>sec) throw  new RuntimeException("Parentheses are invalid!");
 }
+
+    /**
+     * this method checks if expression is valid because of operators
+     * @param str is given expression that must be splited
+     * @throws RuntimeException if operators appeared  consecutively
+     */
+    public static void validops(String str) throws RuntimeException{ int br=0,br1=0,br2=0;
+        for(String s1 : str.split(" ")){
+            if(s1.equals("+") || s1.equals("-") || s1.equals("*") || s1.equals("/")) br++;
+            if(s1.equals("sqrt")) br2++;
+            if(s1.equals("0") || s1.equals("1") || s1.equals("2") || s1.equals("3") || s1.equals("4") || s1.equals("5") || s1.equals("6") || s1.equals("7") || s1.equals("8") || s1.equals("9")) br1++;
+
+        }
+        br++;
+        if((br1+br2)!=br) throw new RuntimeException("Two operators appeared consecutively- error!");
+}
     /**
 
      * @param str the string that is passed
@@ -75,6 +91,7 @@ public class ExpressionEvaluator {
     public static double evaluate(String str){
      Stack<String> ops=new Stack<String>();
   Stack<Double> vals=new Stack<Double>();
+
   String[] s=str.split(" ");
     for(String s1: s) {
        switch(s1){
@@ -85,7 +102,9 @@ public class ExpressionEvaluator {
             case "/":
             case "sqrt":
                 ops.push(s1);
+
                 break;
+
             case ")":
                  validexpression(s1);
 
